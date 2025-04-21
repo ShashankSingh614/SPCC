@@ -1,0 +1,162 @@
+q1-two-pass-assembler.py – Symbol and Literal Tables
+asm
+
+START 100
+LOOP    LOAD =5
+        ADD VALUE
+        STORE RESULT
+        JNZ LOOP
+VALUE   DATA 10
+RESULT  DATA 0
+END
+
+q2-two-pass-assembler-base.py – Base Table and Location Counter
+asm
+
+START 200
+SECTION CODE
+LOAD A
+ADD B
+STORE C
+SECTION DATA
+A DATA 5
+B DATA 10
+C DATA 0
+END
+
+q3-two-pass-mot-pot.py – Display MOT and POT
+asm
+
+START 0
+LOAD A
+ADD B
+STORE C
+HALT
+END
+
+q4-macro-processor.py – Display MNT, MDT, ALA
+asm
+
+MACRO INCR &ARG
+LOAD &ARG
+ADD ONE
+STORE &ARG
+MEND
+
+q5-macro-processor-expansion.py – Macro Expansion with Predefined Tables
+asm
+
+ADD X, Y
+INCR Z
+PRINT X
+
+q6-macro-processor-identify.py – Identify and Expand Macros
+asm
+
+MACRO DECR &ARG
+LOAD &ARG
+SUB ONE
+STORE &ARG
+MEND
+
+DECR COUNT
+
+q7-first-set.py – FIRST Set
+text
+
+E -> T E'
+E' -> + T E' | ε
+T -> F T'
+T' -> * F T' | ε
+F -> ( E ) | id
+
+q8-follow-set.py – FOLLOW Set
+text
+
+E -> T E'
+E' -> + T E' | ε
+T -> F T'
+T' -> * F T' | ε
+F -> ( E ) | id
+
+q9-lexical-analyzer.py – Keywords, Identifiers, Symbols
+c
+
+int main() {
+    int a = 5, b = 10;
+    if (a < b) {
+        a = a + b;
+    }
+}
+
+q10-lexical-analyzer-numbers.py – Numbers, Identifiers, Preprocessor Directives
+c
+
+#include <stdio.h>
+#define VALUE 100
+
+int main() {
+    float pi = 3.14;
+    int radius = 5;
+    float area = pi * radius * radius;
+    return 0;
+}
+
+Q11: Code Optimization (Algebraic Simplification & CSE)
+Run it with input code like:
+
+a = b + 0
+b = c * 1
+c = d + d
+d = e / e
+e = x * 0
+f = d + d
+
+
+Q12: Code Optimization (Constant Propagation & Dead Code Elimination)
+
+x = 5
+y = x + 3
+z = y + 2
+a = 10
+// a is not used after this
+print(z)
+
+
+Q13: Intermediate Code Generation using Triples
+
+a = b + c;
+d = a * 2;
+e = d - c;
+
+Q14: Intermediate Code Generation using Quadruples
+
+a = b + c
+Or:
+x = y * z + w
+
+
+Q15: Lexical Analyzer using PLY
+
+int main() {
+    int a = 5;
+    if (a > 0) {
+        a = a + 1;
+    }
+}
+
+Q16: Handwritten Lexical Analyzer
+
+int main() {
+    int x = 10;
+    // increment
+    x++;
+}
+
+Q17: Two-Pass Assembler
+
+START 100
+LOOP: ADD A, B
+MOV X, =5
+MUL X, C
+END
